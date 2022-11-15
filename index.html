@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Pattern</title>
+  </head>
+  <body>
+    <div>
+      <h1>Design Pattern</h1>
+      <ul>
+        <li>
+          <div>
+            <h2>Creational Patterns</h2>
+            <ul>
+              <li>
+                <div>
+                  <h3>Class Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    const civic = new Car(4, 'V6', 'White');<br />
+                    <br />
+                    civic = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V6", <br />
+                    &emsp;"color": "White" <br />
+                    } <br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Constructor Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    class SUV extends Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;super(doors, engine, color); <br />
+                    &emsp;this.wheels = 4; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    const xuv = new SUV(4, 'V8', 'Red');<br />
+                    <br />
+                    xuv = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V8", <br />
+                    &emsp;"color": "Red" <br />
+                    &emsp;"wheels": 4 <br />
+                    } <br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Singleton Design Pattern</h3>
+                  <code>
+                    let instance = null; <br />
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;&emsp;if(!instance){ <br />
+                    &emsp;&emsp;&emsp;this.doors = doors; <br />
+                    &emsp;&emsp;&emsp;this.engine = engine; <br />
+                    &emsp;&emsp;&emsp;this.color = color; <br />
+                    &emsp;&emsp;&emsp;instance = this; <br />
+                    &emsp;&emsp;} else { <br />
+                    &emsp;&emsp;&emsp;return instance; <br />
+                    &emsp;&emsp;} <br />
+                    &emsp;&emsp;} <br />
+                    } <br />
+                    <br />
+                    const civic = new Car(4, 'V6', 'White');<br />
+                    const xuv = new Car(4, 'V8', 'Red');<br />
+                    <br />
+                    civic = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V6", <br />
+                    &emsp;"color": "White" <br />
+                    } <br />
+                    xuv = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V6", <br />
+                    &emsp;"color": "White" <br />
+                    } <br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Factory Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+
+                    class CarFactory { <br />
+                    &emsp;createCar(type) { <br />
+                    &emsp;&emsp;switch (type) { <br />
+                    &emsp;&emsp;&emsp;case "Sedan": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V6", "White");
+                    <br />
+                    &emsp;&emsp;&emsp;case "SUV": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V8", "bLACK");<br />
+                    &emsp;&emsp;} <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    const factory = new CarFactory(); <br />
+                    const myHonda = factory.createCar('Sedan'); <br />
+                    <br />
+                    myHonda = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V6", <br />
+                    &emsp;"color": "White" <br />
+                    } <br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Abstract Factory Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+
+                    class CarFactory { <br />
+                    &emsp;createCar(type) { <br />
+                    &emsp;&emsp;switch (type) { <br />
+                    &emsp;&emsp;&emsp;case "civic": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V6", "White");
+                    <br />
+                    &emsp;&emsp;&emsp;case "honda": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V8", "bLACK");<br />
+                    &emsp;&emsp;} <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    class SUV { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    class SUVFactory { <br />
+                    &emsp;createCar(type) { <br />
+                    &emsp;&emsp;switch (type) { <br />
+                    &emsp;&emsp;&emsp;case "cx5": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, 'V6', 'grey');
+                    <br />
+                    &emsp;&emsp;&emsp;case "sante fe": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(2, "V8", 'red');<br />
+                    &emsp;&emsp;} <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    const carFactory = new CarFactory(); <br />
+                    const suvFactory = new SUVFactory(); <br />
+                    <br />
+                    const autoManufacturer = (type, model) => {<br />
+                    &emsp;switch(type) {<br />
+                    &emsp;&emsp;case 'car':<br />
+                    &emsp;&emsp;&emsp;return carFactory.createCar(model);<br />
+                    &emsp;&emsp;case 'suv':<br />
+                    &emsp;&emsp;&emsp;return suvFactory.createCar(model);<br />
+                    &emsp;}<br />
+                    }<br />
+                    const cx5 = autoManufacturer('suv', 'cx5'); <br />
+                    <br />
+                    cx5 = { <br />
+                    &emsp;"doors": 4, <br />
+                    &emsp;"engine": "V6", <br />
+                    &emsp;"color": "grey" <br />
+                    } <br />
+                  </code>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h2>Structural Patterns</h2>
+            <ul>
+              <li>
+                <div>
+                  <h3>Module Design Pattern</h3>
+                  <code
+                    >Creating the separate pure function for each
+                    operations</code
+                  >
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Mixins Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+
+                    class CarFactory { <br />
+                    &emsp;createCar(type) { <br />
+                    &emsp;&emsp;switch (type) { <br />
+                    &emsp;&emsp;&emsp;case "civic": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V6", "White");
+                    <br />
+                    &emsp;&emsp;&emsp;case "honda": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, "V8", "bLACK");<br />
+                    &emsp;&emsp;} <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    class SUV { <br />
+                    &emsp;constructor(doors, engine, color) { <br />
+                    &emsp;this.doors = doors; <br />
+                    &emsp;this.engine = engine; <br />
+                    &emsp;this.color = color; <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    class SUVFactory { <br />
+                    &emsp;createCar(type) { <br />
+                    &emsp;&emsp;switch (type) { <br />
+                    &emsp;&emsp;&emsp;case "cx5": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(4, 'V6', 'grey');
+                    <br />
+                    &emsp;&emsp;&emsp;case "sante fe": <br />
+                    &emsp;&emsp;&emsp;&emsp;return new Car(2, "V8", 'red');<br />
+                    &emsp;&emsp;} <br />
+                    &emsp;} <br />
+                    } <br />
+                    <br />
+                    let carMixin = {<br />
+                    &emsp;revEngine() {<br />
+                    &emsp;&emsp;console.log(`The ${this.engine} engine is doing
+                    Vroom Vroom!`); <br />
+                    &emsp;}<br />
+                    }<br />
+                    <br />
+                    const carFactory = new CarFactory(); <br />
+                    const suvFactory = new SUVFactory(); <br />
+                    <br />
+                    const autoManufacturer = (type, model) => {<br />
+                    &emsp;switch(type) {<br />
+                    &emsp;&emsp;case 'car':<br />
+                    &emsp;&emsp;&emsp;return carFactory.createCar(model);<br />
+                    &emsp;&emsp;case 'suv':<br />
+                    &emsp;&emsp;&emsp;return suvFactory.createCar(model);<br />
+                    &emsp;}<br />
+                    }<br />
+                    Object.assign(Car.prototype, carMixin); <br /><br />
+                    const honda = autoManufacturer('car', 'honda'); <br /><br />
+                    honda.revEngine(); <br /><br />
+                    The V8 engine is doing Vroom Vroom!<br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Facade Design Pattern</h3>
+                  <code
+                    >Breaking the complex code into small components to reduce
+                    the complexity</code
+                  >
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Flyweight Design Pattern</h3>
+                  <code
+                    >It is similar to Singleton Pattern, major used by
+                    browser<br />
+                    to prevent the creation of more items into the memory of
+                    <br />
+                    browser</code
+                  >
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Decorator Design Pattern</h3>
+                  <code
+                    >Similar to mixins adding function adding function in class
+                    using Decorator @</code
+                  >
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>MVC Design Pattern</h3>
+                  <code
+                    >Model View Controller
+                    <ul>
+                      <li>Model = Data</li>
+                      <li>View = Visuals(HTML)</li>
+                      <li>Controller = Logic</li>
+                    </ul>
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>MVP Design Pattern</h3>
+                  <code
+                    >Model View Presenter In this view doesn't have access to
+                    <br />
+                    model it should be access through the presenter. Majorly
+                    <br />
+                    used in backbone for android development
+                    <ul>
+                      <li>Model = Data</li>
+                      <li>View = Visuals(HTML)</li>
+                      <li>Presenter = Logic</li>
+                    </ul>
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>MVVM Design Pattern</h3>
+                  <code>
+                    Majorly used in React
+                    <ul>
+                      <li>
+                        Sometimes referred to as MVVC(Model-View View
+                        Controller)
+                      </li>
+                      <li>Model = Data</li>
+                      <li>View = Stateless Visuals(components)</li>
+                      <li>View Model = Stateful Components</li>
+                    </ul>
+                  </code>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h2>Behavioral Patterns</h2>
+            <ul>
+              <li>
+                <div>
+                  <h3>Observer Design Pattern</h3>
+                  <code>
+                    class Car { <br />
+                    &emsp;constructor(gas) { <br />
+                    &emsp;&emsp;this.gas = gas; <br />
+                    &emsp;} <br />
+                    <br />
+                    &emsp;setGasLevel(val) {<br />
+                    &emsp;&emsp;this.gas = val;<br />
+                    &emsp;&emsp;this.notifyAll();<br />
+                    &emsp;}<br />
+                    <br />
+                    &emsp;register(observer) {<br />
+                    &emsp;&emsp;this.actions.push(observer);<br />
+                    &emsp;}<br />
+                    <br />
+                    &emsp;unregister(observer) {<br />
+                    &emsp;&emsp;this.actions.remove.filter(function(el) {<br />
+                    &emsp;&emsp;&emsp;return el !== observer;<br />
+                    &emsp;&emsp; });<br />
+                    &emsp;}<br />
+                    <br />
+                    &emsp;notifyAll() {<br />
+                    &emsp;&emsp;return this.actions.forEach(function(el) {<br />
+                    &emsp;&emsp;&emsp;el.update(this);<br />
+                    &emsp;&emsp;}.bind(this));<br />
+                    &emsp;}<br />
+                    }<br />
+                    <br />
+                    class consumption {<br />
+                    &emsp;update(car) {<br />
+                    &emsp;&emsp;car.gas = car.gas + 1;<br />
+                    &emsp;}<br />
+                    }<br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>State Design Pattern</h3>
+                  <code>
+                    Majorly used in React to manage the state of variable to
+                    <br />
+                    predict the rendering (useState)
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Chain of Responsibility Design Pattern</h3>
+                  <code>
+                    When we have some operation that goes one after another
+                    we<br />
+                    majorly use this pattern. Let suppose we need to buy<br />
+                    something from web so we have different steps like login,<br />
+                    check address, calculate tax, show total amount, add<br />
+                    delivery date, final order.
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Iterator Design Pattern</h3>
+                  <code>
+                    When we want to run the particular function in repeat using
+                    <br />
+                    for loops or any loops
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Strategy Design Pattern</h3>
+                  <code>
+                    Whenever we create a class or function and we reuse it
+                    for<br />
+                    different scenario we are implementing Strategy pattern<br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Momento Design Pattern</h3>
+                  <code>
+                    When we transfer data from one state to another so there
+                    are<br />
+                    some change in format but in start and end the data is
+                    same.<br />
+                    Their is no change in data. A temporary state of your
+                    data<br />
+                    retaining the info while being converted from one format
+                    to<br />
+                    another.
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Mediator Design Pattern</h3>
+                  <code>
+                    When we are actually interacting between classes. <br />
+                    <br />
+                    class TrafficTower {<br />
+                    &emsp;constructor() {<br />
+                    &emsp;&emsp;this.airplanes = [];<br />
+                    &emsp;}<br />
+                    <br />
+                    &emsp;requestPositions() {<br />
+                    &emsp;&emsp;return this.airplanes.map(airplane => {<br />
+                    &emsp;&emsp;&emsp;return airplane.position;<br />
+                    &emsp;&emsp;});<br />
+                    &emsp;}<br />
+                    }<br />
+                    <br />
+                    class Airplane{<br />
+                    &emsp;constructor(position, trafficTower) {<br />
+                    &emsp;&emsp;this.position = position;<br />
+                    &emsp;&emsp;this.trafficTower = trafficTower;<br />
+                    &emsp;&emsp;this.trafficTower.airplanes.push(this);<br />
+                    &emsp;}<br />
+                    <br />
+                    &emsp;requestPositions() {<br />
+                    &emsp;return this.trafficTower.requestPositions();<br />
+                    &emsp;}<br />
+                    }<br />
+                  </code>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>Command Design Pattern</h3>
+                  <code>
+                    Majorly used in Redux<br />
+                    Suppose you are building an<br />
+                    application that supports the Cut, Copy, and Paste
+                    clipboard<br />
+                    actions. These actions can be triggered in different ways<br />
+                    throughout the app: by a menu system, a context menu
+                    (e.g.<br />
+                    by right clicking on a textbox), or by a keyboard shortcut.
+                    <br />
+                    <br />
+                    Command objects allow you to centralize the processing of<br />
+                    these actions, one for each operation. So, you need only
+                    one<br />
+                    Command for processing all Cut requests, one for all Copy<br />
+                    requests, and one for all Paste requests. <br />
+                    <br />
+                    Because commands centralize all processing, they are also<br />
+                    frequently involved in handling Undo functionality for
+                    the<br />
+                    entire application <br />
+                  </code>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
